@@ -41,7 +41,10 @@ app.use('/api/number', function(req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.status(404).send({
+    message: 'Not found',
+    path: req.path
+  });
 });
 
 // error handler
