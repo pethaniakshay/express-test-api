@@ -19,10 +19,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('api/', indexRouter);
+app.use('api/users', usersRouter);
 
-app.use('/number/:number', function(req, res, next) {
+app.use('api/number/:number', function(req, res, next) {
   const number = req.params.number;
   res.send({
     number,
@@ -30,7 +30,7 @@ app.use('/number/:number', function(req, res, next) {
   });
 });
 
-app.use('/number', function(req, res, next) {
+app.use('api/number', function(req, res, next) {
   const number = req.query.number;
   res.send({
     number,
