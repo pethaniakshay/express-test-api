@@ -6,6 +6,7 @@ import logger from "morgan";
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 import numberRouter from "./routes/number";
+import timeExperiments from "./routes/time-experiments";
 
 let app = express();
 
@@ -23,6 +24,7 @@ app.use("/api", indexRouter);
 app.use("/api", numberRouter);
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/time", timeExperiments);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
