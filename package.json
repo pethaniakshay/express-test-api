@@ -1,20 +1,18 @@
 {
   "name": "node-app",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "scripts": {
-    "start:watch": "nodemon --exec babel-node ./src/bin/www",
-    "start:dev": "babel-node ./src/bin/www",
+    "dev": "nodemon --exec babel-node ./src/bin/www",
+    "start": "babel-node ./src/bin/www",
     "transpile": "babel ./src/bin --out-dir dist-server",
-    "start": "pm2 start ./src/bin/www",
-    "stop": "pm2 stop ./src/bin/www",
-    "restart": "pm2 restart ./bin/www",
-    "pm2": "pm2"
+    "pm2": "pm2",
+    "pm2:start": "pm2 start ./src/bin/www",
+    "pm2:stop": "pm2 stop ./src/bin/www",
+    "pm2:restart": "pm2 restart ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.6",
     "debug": "~4.3.4",
-    "esm": "^3.2.25",
     "express": "~4.18.2",
     "http-errors": "~2.0.0",
     "jade": "~1.11.0",

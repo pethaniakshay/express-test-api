@@ -5,8 +5,9 @@ import logger from "morgan";
 
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
+import numberRouter from "./routes/number";
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set("views", join(__dirname, "views"));
@@ -19,24 +20,9 @@ app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
 
 app.use("/api", indexRouter);
+app.use("/api", numberRouter);
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
-
-app.use("/api/number/:number", function (req, res, next) {
-  const number = req.params.number;
-  res.send({
-    number,
-    random: Math.floor(Math.random() * 1000 + 1),
-  });
-});
-
-app.use("/api/number", function (req, res, next) {
-  const number = req.query.number;
-  res.send({
-    number,
-    random: Math.floor(Math.random() * 1000 + 1),
-  });
-});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
